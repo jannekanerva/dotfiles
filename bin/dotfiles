@@ -1,0 +1,75 @@
+#!/usr/bin/env fish
+
+set -l COMMAND_NAME $argv[1]
+
+function sub_help
+  echo "Usage: dotfiles <command>"
+  echo
+  echo "Commands:"
+  echo "   clean            Clean up caches (brew, npm)"
+  echo "   update           Update packages and pkg managers (brew, brew cask, npm)"
+end
+
+function sep -a text
+  echo
+  printf '%*s' 120 | tr ' ' '='
+  echo
+  echo $text
+  echo
+end
+
+function sub_update
+  sep "Updating brew"
+  brew update
+
+  sep "Upgrading brew packages"
+  brew upgrade
+
+  sep "Reinstall pipenv (so it works if python was upgraded)"
+  brew reinstall pipenv
+
+  sep "Upgrading brew cask packages"
+  brew cu
+
+  sep "Upgrading node"
+  curl -sSL https://raw.githubusercontent.com/brigand/fast-nvm-fish/master/nvm.fish > $HOME/.config/fish/functions/nvm.fish
+  nvm install 10
+  nvm use 10
+
+  sep "Upgrading npm global packages"
+  npm update -g
+
+  sep "Upgrading fisher and its packages"
+  fisher self-update
+  fisher
+
+  sep "Stuff needing a manual check for updates"
+  echo "Check updates for these and if an update is available, you should modify the installation scripts to install the new version:"
+  echo "- nvm at https://github.com/nvm-sh/nvm/releases"
+  echo "- pyenv"
+  echo "- global python version"
+  echo "- global node version"
+
+  sep "Now refresh by opening a new shell"
+end
+
+function sub_clean
+  sep "Cleaning brew"
+  brew cleanup
+
+  sep "Cleaning npm"
+  npm cache clean --force
+end
+
+if [ -z "$argv" ];
+  sub_help
+  exit 1
+end
+
+switch $COMMAND_NAME
+  case update
+    sub_update
+  case clean
+    sub_clean
+end
+
