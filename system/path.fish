@@ -20,3 +20,6 @@ set -g -x MANPATH \
   $DOTFILES_BREW_PREFIX_GNU_TAR/libexec/gnuman \
   $DOTFILES_BREW_PREFIX_GNU_GREP/libexec/gnuman \
   $MANPATH
+
+prepend-path "$HOME/.poetry/bin"
+prepend-path "/Applications/Postgres.app/Contents/Versions/latest/bin"

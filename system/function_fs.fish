@@ -50,3 +50,4 @@ function dataurl
   end
   echo "data:$MIMETYPE;base64,"(openssl base64 -in "$argv" | tr -d '\n')
 end
+

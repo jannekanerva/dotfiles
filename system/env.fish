@@ -16,3 +16,5 @@ set -x -g PAGER less
 set -x -g EDITOR "code --wait"
 set -x -g DOTFILES_IDE "code"
 set -x -g DOTFILES_GIT_GUI "stree"
+
+set -x -g fish_prompt_pwd_dir_length 0
