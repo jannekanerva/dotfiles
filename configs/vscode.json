@@ -15,7 +15,6 @@
     "suppressShowKeyBindingsNotice": true
   },
   "breadcrumbs.enabled": true,
-  "editor.formatOnSave": true,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "window.zoomLevel": 0,
@@ -84,5 +83,8 @@
   "codemetrics.nodeconfiguration.JsxSelfClosingElement": 0.1,
   "editor.fontFamily": "'Fira Code', monospace",
   "editor.fontLigatures": true,
-  "window.newWindowDimensions": "inherit"
+  "window.newWindowDimensions": "inherit",
+  "workbench.startupEditor": "none",
+"prettier.arrowParens": "avoid",
+"python.languageServer": "Microsoft"
 }
