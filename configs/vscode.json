@@ -86,5 +86,6 @@
   "window.newWindowDimensions": "inherit",
   "workbench.startupEditor": "none",
 "prettier.arrowParens": "avoid",
-"python.languageServer": "Microsoft"
+"python.languageServer": "Microsoft",
+"jupyter.jupyterCommandLineArguments": []
 }
