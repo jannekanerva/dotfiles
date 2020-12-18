@@ -1,7 +1,7 @@
 # Options
 set __fish_git_prompt_show_informative_status
 set __fish_git_prompt_showcolorhints
-set __fish_git_prompt_showupstream "informative"
+#set __fish_git_prompt_showupstream "informative"
 
 # Colors
 set green (set_color green)
@@ -31,17 +31,16 @@ set __fish_git_prompt_char_untrackedfiles ' 🔍  '
 set __fish_git_prompt_char_upstream_ahead ' ☝️  '
 set __fish_git_prompt_char_upstream_behind ' 👇  '
 set __fish_git_prompt_char_upstream_diverged ' 🚧  '
-set __fish_git_prompt_char_upstream_equal ' 💯 ' 
+set __fish_git_prompt_char_upstream_equal ' 💯 '
 
 function fish_prompt
   set last_status $status
 
   set_color $fish_color_cwd
+  printf '%s ' (__fish_git_prompt) \n
   printf '%s' (prompt_pwd)
   set_color normal
 
-  printf '%s ' (__fish_git_prompt)
-#  echo -n "🐠  "
-  echo -n "➜ "
+  echo -n " ➜ "
   set_color normal
 end
